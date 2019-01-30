@@ -1,0 +1,28 @@
+#!/usr/bin/python3.5
+import sys
+import os
+
+os.system('clear')
+
+word = ''
+for i,arg in enumerate(sys.argv):
+  if i > 1:
+    word += ' '+arg
+  elif i > 0:
+    word += arg
+
+folder = '/home/jaredeoliphant/bom_text/'
+files = ['00.Contents','00.preface','01.1-nephi','02.2-nephi','03.jacob','04.enos','05.jarom','06.omni', \
+  '07.words-of-mormon','08.mosiah','09.alma','10.helaman','11.3-nephi','12.4-nephi','13.mormon','14.ether','15.moroni']
+
+count = 0
+for file in files:
+  f = open(folder+file,'r')
+  contents = f.readlines()
+  f.close()
+  for line in contents:
+    if word in line:
+      print(line)
+      count +=1
+
+print('This phrase appears '+str(count)+' times in the Book of Mormon.')
